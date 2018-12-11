@@ -1,12 +1,20 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+<template lang="pug">
+  <div id="app" >
+    menu-app
     <router-view/>
   </div>
 </template>
+
+
+<script >
+  import MenuApp from './components/Menu';
+  export default{
+
+    components: {
+      'menu-app': MenuApp
+    }
+  }
+</script>
 
 <style lang="scss">
 #app {
