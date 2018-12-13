@@ -16,3 +16,10 @@
     props: ['title', 'price', 'descr']
   }
 </script>
+
+<style scoped lang="sass">
+  .pricing-plan
+    border-radius: 30px
+    border: 1px solid #d5d5dd
+    margin: 70px 0
+</style>
