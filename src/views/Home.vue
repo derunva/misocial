@@ -6,13 +6,18 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import { EventBus } from '../event-bus.js';
 export default {
   name: 'home',
-  components: {
-    HelloWorld
+  created : function(){
+    EventBus.$emit('setHeading', {title: this.title, caption: this.caption, intro: this.intro});
+  },
+  data: ()=>{
+    return {
+      title: 'Home',
+      caption : 'misocial',
+      intro : 'lorem ipsum'
+    }
   }
 }
 </script>

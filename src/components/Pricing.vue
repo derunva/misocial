@@ -13,7 +13,7 @@
   export default{
     created : function(){
       console.log('pricing')
-      EventBus.$emit('setHeading', {title: this.title});
+      EventBus.$emit('setHeading', {title: this.title, caption: this.caption, intro: this.intro});
     },
     components: {
       'heading': Heading,
@@ -23,7 +23,7 @@
       return {
         title : 'Pricing Table',
         caption: 'MIsocial',
-        intro: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.',
+        intro: 'Lorem ipsum dolor sit amet, consectetur <br>  adipisicing elit, sed do eiusmod tempor incididunt ut.',
         pricings : [
           {
             title: 'personal',

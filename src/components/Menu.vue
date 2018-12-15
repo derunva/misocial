@@ -12,13 +12,17 @@
         |Features
       router-link(tag="li" to="articles")
         |Articles
-      router-link(tag="li" to="pricing")
+      router-link(tag="li" to="pricing" ref="test")
         |Pricing
 </template>
 
 <script>
 export default {
-  name: 'MenuApp'
+  name: 'MenuApp',
+  created : function(){
+    console.log(this.$refs);
+    console.log(this.$refs.test);
+  }
 }
 </script>
 
@@ -37,6 +41,44 @@ export default {
 .menu{
   padding: 45px 50px;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
+  align-items: center;
+  @media(min-width: 1000px){
+    
+  } 
+  flex-direction: column;
+  @media(min-width: 1000px){
+    flex-direction: row;
+  }
+  min-height: 140px;
+}
+ul{
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+li{
+  color: #fff;
+  cursor: pointer;
+  padding: 15px 20px;
+  position: relative;
+  margin: 0 5px;
+  font-weight: 600;
+  &:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 0;
+    transition: ease .5s width;
+    height: 2px;
+    bottom: 0;
+    background: #fff; 
+  }
+  &:hover,&.router-link-exact-active{
+    &:before{
+      width: 100%;
+    }
+  }
 }
 </style>
