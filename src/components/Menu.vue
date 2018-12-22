@@ -12,17 +12,13 @@
         |Features
       router-link(tag="li" to="articles")
         |Articles
-      router-link(tag="li" to="pricing" ref="test")
+      router-link(tag="li" to="pricing")
         |Pricing
 </template>
 
 <script>
 export default {
-  name: 'MenuApp',
-  created : function(){
-    console.log(this.$refs);
-    console.log(this.$refs.test);
-  }
+  name: 'MenuApp'
 }
 </script>
 

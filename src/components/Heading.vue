@@ -1,23 +1,26 @@
 <template lang="pug">
   h1.heading(v-if="tag")
-    .heading__inner
-      .heading__caption(v-if="caption") {{caption}}
-      .heading__title(v-if="title") {{title}}
-      .heading__intro(v-if="intro" v-html="intro") 
+    span.heading__inner
+      span.heading__caption(v-if="caption") {{caption}}
+      span.heading__title(v-if="title") {{title}}
+      span.heading__intro(v-if="intro" v-html="intro") 
   h2.heading(v-else)
-    .heading__inner
-      .heading__caption(v-if="caption") {{caption}}
-      .heading__title(v-if="title") {{title}}
-      .heading__intro(v-if="intro" v-html="intro") 
+    span.heading__inner
+      span.heading__caption(v-if="caption") {{caption}}
+      span.heading__title(v-if="title") {{title}}
+      span.heading__intro(v-if="intro" v-html="intro") 
 </template>
 
 <script>
   export default{
     name: 'Heading',
-    props: ['title', 'caption', 'intro', 'tag']
+    props: ['title', 'caption', 'intro', 'tag'] 
   }
 </script>
 <style scoped lang="scss">
+  span{
+    display: block;
+  }
   .heading{
     margin: auto;
     text-align: center;
