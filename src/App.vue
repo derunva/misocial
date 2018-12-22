@@ -1,5 +1,5 @@
 <template lang="pug">
-  <div @scroll="handleScroll" id="app" v-on:myevent="setHeading(data)">  
+  <div @scroll="handleScroll" id="app" v-on:myevent="setHeading(data)"  v-bind:class="{ noScroll: modalOpen }">  
     .main-screen
       menu-app
       heading(v-bind:title="title" v-bind:caption="caption" v-bind:intro="intro" tag="true")
@@ -7,6 +7,7 @@
         div(v-on:click="nextSection()")
     .wrapper#next.main-section
       <router-view/>
+    modal
   </div>
 </template>
 
@@ -14,6 +15,7 @@
 <script >
   import MenuApp from './components/Menu';
   import Heading from './components/Heading';
+  import Modal from './components/Modal'
   import { EventBus } from './event-bus.js';
   var VueScrollTo = require('vue-scrollto');
   console.log(VueScrollTo)
@@ -28,11 +30,13 @@
 
     components: {
       'menu-app': MenuApp,
-      'heading' : Heading
+      'heading' : Heading,
+      'modal' : Modal
     },
     data: ()=>{
       return {
-        srolledOnce : false, 
+        srolledOnce : false,
+        modalOpen : false, 
         title : 'Select a Plan',
         caption: 'MIsocial',
         intro: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.'
@@ -41,6 +45,12 @@
     created: function(){
       _this = this;
       EventBus.$on('setHeading', getHeading);
+      EventBus.$on('closeModal', function(){
+        _this.modalOpen = false
+      });
+      EventBus.$on('modalOpen', function(){      
+        _this.modalOpen = true
+      });
     },
     methods : {
       handleScroll:(el)=>{
@@ -129,6 +139,9 @@
 #app{
   overflow-y: scroll;
   height: 100vh;
+  &.noScroll{
+    overflow-y: hidden;
+  }
 }
 body,html{
   overflow: hidden;

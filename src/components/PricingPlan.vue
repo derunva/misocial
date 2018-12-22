@@ -13,15 +13,10 @@
 </template>
 
 <script >
+  import { EventBus } from '../event-bus.js';
   export default{
     name: "PricingPlan",
     props: ['img','title', 'price', 'descr', 'id'],
-    mounted: function(){
-      this.$nextTick(function(){
-        console.log(this.props)
-      })
-      
-    },
     data: function(){
       return {
         hello: 'sunburn300.png'
@@ -32,7 +27,21 @@
         return require('../../public/img/'+pic)
       },
       openModal(id){
-        console.log(id)
+        var data = {
+          options : [
+            {
+              title : "Some good stuff",
+              descr : "lorem ipsum sit amen dolor lorem ipsum sit amen dolor lorem ipsum sit amen dolor "
+            },
+            {
+              title : "Some good stuff",
+              descr : "lorem ipsum sit amen dolor lorem ipsum sit amen dolor lorem ipsum sit amen dolor "
+            }
+          ],
+          pricingPlanName : 'test name',
+          pricingId : 0
+        }
+        EventBus.$emit('modalOpen', data)
       }
     }
   }
