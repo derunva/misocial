@@ -3,7 +3,7 @@
     .modal-component__inner.wrapper
       .modal-component__content
         .modal-component__title(v-html="content")
-        pricingmodal(v-bind:data="data")
+        pricingmodal(v-bind:info="data")
       button(@click="modalClose") close
 </template>
 <script >
@@ -16,15 +16,12 @@
       pricingmodal : PricingModal
     },
     mounted: function(){
-      console.log(this.data)
+      console.log(this)
     },
     created: function(){
-      console.log(this.open)
       var _this = this;
       EventBus.$on('modalOpen', function(data){
-        console.log('open', data, _this.open)
-        _this.options = data.options
-        _this.title = data.title
+        _this.data = data;
         _this.open = true
       });
       

@@ -18,7 +18,6 @@
   import Modal from './components/Modal'
   import { EventBus } from './event-bus.js';
   var VueScrollTo = require('vue-scrollto');
-  console.log(VueScrollTo)
   var _this;
   const getHeading = function(data) { 
       _this.title = data.title

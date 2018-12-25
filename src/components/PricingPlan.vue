@@ -19,29 +19,29 @@
     props: ['img','title', 'price', 'descr', 'id'],
     data: function(){
       return {
-        hello: 'sunburn300.png'
+        pricingInfo : {
+          options : [
+            {
+              title : this.$props.title,
+              descr : this.$props.descr
+            },
+            {
+              title : "Some good stuff !!!!",
+              descr : "lorem ipsum sit amen dolor lorem ipsum sit amen dolor lorem ipsum sit amen dolor "
+            }
+          ],
+          pricingPlanName : 'test name asdas ',
+          pricingId : this.$props.id
+        }
       }
     },
     methods: {
       getImgUrl(pic) {
         return require('../../public/img/'+pic)
       },
-      openModal(id){
-        var data = {
-          options : [
-            {
-              title : "Some good stuff",
-              descr : "lorem ipsum sit amen dolor lorem ipsum sit amen dolor lorem ipsum sit amen dolor "
-            },
-            {
-              title : "Some good stuff",
-              descr : "lorem ipsum sit amen dolor lorem ipsum sit amen dolor lorem ipsum sit amen dolor "
-            }
-          ],
-          pricingPlanName : 'test name',
-          pricingId : 0
-        }
-        EventBus.$emit('modalOpen', data)
+      openModal: function(id){
+        // console.log(this.pricingInfo)
+        EventBus.$emit('modalOpen', this.pricingInfo)
       }
     }
   }

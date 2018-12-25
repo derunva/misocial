@@ -6,14 +6,14 @@
           td Option
           td Descrition
       tbody
-        tr(v-for="item in options")
+        tr(v-for="item in info.options")
           td {{item.title}}
           td {{item.descr}}
     .pricing-form
-      h2 {{pricingPlanName}}
+      h2 {{info.pricingPlanName}}
       form
-        input(type="hidden" :value="pricingPlanName")
-        input(type="hidden" :value="pricingId")
+        input(type="hidden" :value="info.pricingPlanName")
+        input(type="hidden" :value="info.pricingId")
         input(type="text" placeholder="Name")
         input(type="text" placeholder="Phone")
         button order
@@ -21,28 +21,6 @@
 <script >
   export default{
     name: "modal-pricing",
-    props : ['data'],
-    mounted: function(){
-      this.$nextTick(function(){
-        console.log(this.props)
-      })
-      
-    },
-    data: ()=>{
-      return {
-        options : [
-          {
-            title : "Some good stuff",
-            descr : "lorem ipsum sit amen dolor lorem ipsum sit amen dolor lorem ipsum sit amen dolor "
-          },
-          {
-            title : "Some good stuff",
-            descr : "lorem ipsum sit amen dolor lorem ipsum sit amen dolor lorem ipsum sit amen dolor "
-          }
-        ],
-        pricingPlanName : 'test name',
-        pricingId : 0
-      }
-    }
+    props : ['info']
   }
 </script>
