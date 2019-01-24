@@ -16,6 +16,11 @@
     created : function(){
       console.log('pricing')
       EventBus.$emit('setHeading', {title: this.title, caption: this.caption, intro: this.intro});
+      this.$http.get('http://localhost:3000/pricing')
+        .then(responce => {
+          console.log(responce.body)
+          this.pricings = responce.body
+        })
     },
     components: {
       'heading': Heading,

@@ -1,7 +1,8 @@
 <template lang="pug">
   .pricing-plan
     .pricing-plan__icon(v-if="img")
-      img(v-bind:src="getImgUrl(img)")
+      img(v-bind:src="img")
+      <!-- img(v-bind:src="getImgUrl(img)") -->
     .pricing-plan__title {{title}}
     .pricing-plan__price 
       span.curency $
