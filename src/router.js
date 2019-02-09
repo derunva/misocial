@@ -20,11 +20,25 @@ export default new Router({
       component: Pricing
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/users',
+      name: 'users',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
+      component: () => import('./views/Users.vue')
+    },
+    {
+      path: '/users/:userId',
+      name: 'users',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('./views/User.vue')
+    },
+    {
+      path: '/about',
+      name: 'about',
+
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {

@@ -6,13 +6,13 @@
     ul
       router-link(tag="li" to="/")
         |Home
-      router-link(tag="li" to="about")
+      router-link(tag="li" to="/about")
         |Why MISOCIAL 
-      router-link(tag="li" to="features")
+      router-link(tag="li" to="/features")
         |Features
-      router-link(tag="li" to="articles")
+      router-link(tag="li" to="/articles")
         |Articles
-      router-link(tag="li" to="pricing")
+      router-link(tag="li" to="/pricing")
         |Pricing
 </template>
 
