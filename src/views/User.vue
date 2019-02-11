@@ -1,6 +1,7 @@
 <template lang="pug">
   <div class="users">
     <h2>User {{user.nickName}}</h2>
+    router-link(tag="button" to="/users") all users
     form(ref="form" @submit="submit")
       input(v-model="user.nickName" name="nickName")
       h3 {{user.email}}
@@ -9,6 +10,7 @@
       label(v-bind:style="{ backgroundImage: 'url(' + user.avatar + ')' }" ref="fileLabel")
         input(type="file" @change="imgPreview" ref="fileInput" name="avatar")
       button update
+    button( @click="deleteUser(user._id)") remove user
   </div>
 </template>
 <script>
@@ -51,6 +53,15 @@ export default {
 
         reader.readAsDataURL(input.files[0]);
       }
+    },
+    deleteUser(id){
+      console.log(id)
+      this.$http.delete('http://localhost:3000/users/'+id).then((response) => {
+          // success callback
+          this.$router.push({ path: `/users/`})
+      }, (response) => {
+          // error callback
+      });
     },
     submit: function(e) {
       e.preventDefault();

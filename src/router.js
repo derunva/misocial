@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Pricing from './components/Pricing.vue'
 import Page from './components/Page.vue'
+import NewUser from './components/NewUser.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +29,12 @@ export default new Router({
       component: () => import('./views/Users.vue')
     },
     {
+      path: '/users/signup',
+      name: 'signup',
+
+      component: NewUser
+    },
+    {
       path: '/users/:userId',
       name: 'users',
       // route level code-splitting
@@ -41,6 +48,8 @@ export default new Router({
 
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
+    
+    
     {
       path: '**',
       component : () => import(/* webpackChunkName: "404" */ './views/404.vue')
